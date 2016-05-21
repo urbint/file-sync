@@ -52,6 +52,7 @@ func (m *Manager) Start() {
 				return
 			case <-m.nextFetch:
 				m.Fetch()
+				m.nextFetch = m.computeNextFetchTime()
 			}
 		}
 	}()
